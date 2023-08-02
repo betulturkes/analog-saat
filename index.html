@@ -19,15 +19,12 @@
             margin:auto;
         }
         .hour{
-            transform: rotate(45deg);
             transform-origin: 400px 400px;
         }
         .minuteHand{
-            transform: rotate(-45deg);
             transform-origin: 400px 400px;
         }
         .second{
-            transform: rotate(90deg);
             transform-origin: 400px 400px;
         }
     </style>
@@ -80,13 +77,17 @@
         </line>
     </svg>
     <script>
-        let now= new Date();
-        let hour= document.querySelector(".hour");
-        hour.style = `transform: rotate(${now.getHours()*30}deg)`;
-        let minuteHand = document.querySelector(".minuteHand");
-        minuteHand.style = `transform: rotate(${now.getMinutes()*6}deg)`;
-        let second = document.querySelector(".second");
-        second.style = `transform: rotate(${now.getSeconds()}deg)`;        
+        function timeFnc(){
+            let now= new Date();
+            let hour= document.querySelector(".hour");
+            hour.style = `transform: rotate(${now.getHours()*30}deg)`;
+            let minuteHand = document.querySelector(".minuteHand");
+            minuteHand.style = `transform: rotate(${now.getMinutes()*6}deg)`;
+            let second = document.querySelector(".second");
+            second.style = `transform: rotate(${now.getSeconds()}deg)`; 
+        }
+        setInterval(timeFnc,1000);
+        timeFnc();
     </script>
 </body>
 </html>
