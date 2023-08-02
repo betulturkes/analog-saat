@@ -18,8 +18,18 @@
         svg{
             margin:auto;
         }
-        
-    
+        .hour{
+            transform: rotate(45deg);
+            transform-origin: 400px 400px;
+        }
+        .minuteHand{
+            transform: rotate(-45deg);
+            transform-origin: 400px 400px;
+        }
+        .second{
+            transform: rotate(90deg);
+            transform-origin: 400px 400px;
+        }
     </style>
 </head>
 <body>
@@ -42,9 +52,41 @@
             stroke-width="50"
             stroke-dasharray="8,175.1666">
         </circle>
-        <line class="second" x1="400" y1="400" x2="400" y2="50" stroke="red"></line>
-        <line class="minute-hand" x1="400" y1="400" x2="400" y2="150" stroke="#E81C6F" stroke-width="5"></line>
-        <line class="hour" x1="400" y1="400" x2="400" y2="250" stroke="#E81C6F" stroke-width="10"></line>
+        <line 
+            class="second" 
+            x1="400" 
+            y1="400" 
+            x2="400" 
+            y2="50" 
+            stroke="red">
+        </line>
+        <line 
+            class="minuteHand" 
+            x1="400" 
+            y1="400" 
+            x2="400" 
+            y2="150" 
+            stroke="#E81C6F" 
+            stroke-width="5">
+        </line>
+        <line 
+            class="hour" 
+            x1="400" 
+            y1="400" 
+            x2="400" 
+            y2="250" 
+            stroke="#E81C6F" 
+            stroke-width="10">
+        </line>
     </svg>
+    <script>
+        let now= new Date();
+        let hour= document.querySelector(".hour");
+        hour.style = `transform: rotate(${now.getHours()*30}deg)`;
+        let minuteHand = document.querySelector(".minuteHand");
+        minuteHand.style = `transform: rotate(${now.getMinutes()*6}deg)`;
+        let second = document.querySelector(".second");
+        second.style = `transform: rotate(${now.getSeconds()}deg)`;        
+    </script>
 </body>
 </html>
